@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "address-book-b7259": {
+      "hosting": {
+        "address-book": [
+          "address-book-b7259"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "address-book-b7259"
+  }
+}

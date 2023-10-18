@@ -7,7 +7,16 @@ import { HeaderComponent } from './header/header.component';
 import { AddressListComponent } from './address-list/address-list.component';
 import { AddressListElementComponent } from './address-list/address-list-element/address-list-element.component';
 import { AddressViewComponent } from './address-list/address-view/address-view.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {environment} from "../environments/environment";
+import {AppRoutingModule} from "./app-routing.module";
+import {RouterModule} from "@angular/router";
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
+import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
+import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import {getAuth, provideAuth} from "@angular/fire/auth";
 
 @NgModule({
   declarations: [
@@ -15,12 +24,21 @@ import {FormsModule} from "@angular/forms";
     HeaderComponent,
     AddressListComponent,
     AddressListElementComponent,
-    AddressViewComponent
+    AddressViewComponent,
+    SignInComponent,
+    SignUpComponent,
+    PasswordForgotComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    AppRoutingModule,
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
